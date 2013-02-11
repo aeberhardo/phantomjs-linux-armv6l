@@ -3,10 +3,34 @@ phantomjs-linux-armv6l
 
 PhantomJS 1.8.1, compiled on Raspberry PI (Raspbian "wheezy").
 
-PhantomJS: http://phantomjs.org
+PhantomJS is a headless WebKit with JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG. (http://phantomjs.org).
+
+
+__Installation on Raspberry PI__
+
+Clone this repository and extract the file <code>phantomjs-x.y.z-linux-armv6l.tar.bz2</code>.
+
+I achieved the best screenshot results with the following font configuration.
+
+__Caution:__ The following steps could mess up the font configuration for other applications!
+
+<pre>
+$ cd /usr/share
+$ sudo mv fonts fonts.bak
+$ sudo mkdir fonts
+
+$ sudo apt-get install --reinstall ttf-mscorefonts-installer
+
+$ sudo rm /usr/share/fonts/truetype/msttcorefonts/andalemo.ttf
+$ sudo rm /usr/share/fonts/truetype/msttcorefonts/Andale_Mono.ttf
+
+$ sudo fc-cache -rv
+</pre>
 
 
 __Process used to build PhantomJS__
+
+In this chapter I describe the steps I have executed to build the PhantomJS binary.
 
 __1.__ According to http://phantomjs.org/build.html :
 
