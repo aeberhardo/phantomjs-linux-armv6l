@@ -6,10 +6,9 @@ PhantomJS 1.8.1, compiled on Raspberry PI (Raspbian "wheezy").
 PhantomJS: http://phantomjs.org
 
 
-Compilation process
--------------------
+__Process used to build PhantomJS__
 
-According to http://phantomjs.org/build.html:
+__1.__ According to http://phantomjs.org/build.html:
 
 <pre>
 $ sudo apt-get install build-essential chrpath git-core libssl-dev libfontconfig1-dev
@@ -17,13 +16,15 @@ $ cd phantomjs
 $ git checkout 1.8
 </pre>
 
-Download additional 3rdparty files:
+
+__2.__ Download additional 3rdparty files:
 
 <pre>
 $ mkdir src/qt/src/3rdparty/pixman && pushd src/qt/src/3rdparty/pixman && curl -O http://qt.gitorious.org/qt/qt/blobs/raw/4.8/src/3rdparty/pixman/README && curl -O http://qt.gitorious.org/qt/qt/blobs/raw/4.8/src/3rdparty/pixman/pixman-arm-neon-asm.h && curl -O http://qt.gitorious.org/qt/qt/blobs/raw/4.8/src/3rdparty/pixman/pixman-arm-neon-asm.S; popd
 </pre>
 
-Open <code>./build.sh</code> and delete lines 11-31:
+
+__3.__ Open <code>./build.sh</code> and delete lines 11-31:
 
 <pre>
 .. ...
@@ -35,7 +36,7 @@ Open <code>./build.sh</code> and delete lines 11-31:
 </pre>
 
 
-Open ./src/qt/preconfig.sh and add ' -no-pch' option to QT_CFG after ' -no-stl':
+__4.__ Open <code>./src/qt/preconfig.sh</code> and add the option <code>' -no-pch'</code> to <code>QT_CFG</code> after <code>' -no-stl'</code>:
 
 <pre>
 .. ...
@@ -46,18 +47,19 @@ Open ./src/qt/preconfig.sh and add ' -no-pch' option to QT_CFG after ' -no-stl':
 </pre>
 
 
-Start compilation (takes about half a day):
+__5.__ Start compilation (takes about half a day):
 
 <pre>
 $ nohup ./build.sh --confirm > build.sh.out 2> build.sh.err &
 </pre>
 
 
-Create tarball according to http://phantomjs.org/build.html:
+__6.__ Create tarball according to http://phantomjs.org/build.html:
 
 <pre>
 ./deploy/package.sh
 </pre>
 
 
-The tarball can be found in the ./deploy directory.
+__7.__ The tarball can be found in the <code>./deploy</code> directory.
+
