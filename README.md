@@ -8,7 +8,7 @@ PhantomJS: http://phantomjs.org
 
 __Process used to build PhantomJS__
 
-__1.__ According to http://phantomjs.org/build.html:
+__1.__ According to http://phantomjs.org/build.html :
 
 <pre>
 $ sudo apt-get install build-essential chrpath git-core libssl-dev libfontconfig1-dev
@@ -54,7 +54,7 @@ $ nohup ./build.sh --confirm > build.sh.out 2> build.sh.err &
 </pre>
 
 
-__6.__ Create tarball according to http://phantomjs.org/build.html:
+__6.__ Create tarball according to http://phantomjs.org/build.html :
 
 <pre>
 ./deploy/package.sh
