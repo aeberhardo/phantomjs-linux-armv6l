@@ -82,6 +82,8 @@ $ nohup ./deploy/build-and-package.sh > build-and-package.sh.out 2> build-and-pa
 
 __6.__ Create tarball according to http://phantomjs.org/build.html :
 
+__TODO:__ _Is this step still necessary when building with build-and-package.sh ?_
+
 <pre>
 ./deploy/package.sh
 </pre>
