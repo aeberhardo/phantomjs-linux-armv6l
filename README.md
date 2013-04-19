@@ -50,14 +50,14 @@ $ mkdir src/qt/src/3rdparty/pixman && pushd src/qt/src/3rdparty/pixman && curl -
 </pre>
 
 
-__3.__ Open <code>./build.sh</code> and delete lines 11-31:
+__3.__ Open <code>./build.sh</code> and delete lines 11-34:
 
 <pre>
 .. ...
 11 if [[ "$MAKEFLAGS" != "" ]]; then
 12 MAKEFLAGS_JOBS=$(echo $MAKEFLAGS | egrep -o '\-j[0-9]+' | egrep -o '[0-9]+')
 .. ...
-31 fi
+34 fi
 .. ...
 </pre>
 
@@ -73,10 +73,10 @@ __4.__ Open <code>./src/qt/preconfig.sh</code> and add the option <code>' -no-pc
 </pre>
 
 
-__5.__ Start compilation (takes about half a day):
+__5.__ Start compilation:
 
 <pre>
-$ nohup ./build.sh --confirm > build.sh.out 2> build.sh.err &
+$ nohup ./deploy/build-and-package.sh > build-and-package.sh.out 2> build-and-package.sh.err &
 </pre>
 
 
