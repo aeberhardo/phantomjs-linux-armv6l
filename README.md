@@ -8,7 +8,23 @@ PhantomJS is a headless WebKit with JavaScript API. It has fast and native suppo
 
 __Installation on Raspberry PI__
 
-Clone this repository and extract the file <code>phantomjs-x.y.z-linux-armv6l.tar.bz2</code>.
+Download the archive and extract the binary:
+
+<pre>
+$ cd /tmp
+$ wget https://github.com/aeberhardo/phantomjs-linux-armv6l/archive/master.zip
+$ unzip master.zip
+$ cd phantomjs-linux-armv6l-master
+$ bunzip2 *.bz2 && tar xf *.tar
+</pre>
+
+The binary <code>phantomjs</code> is located in the <code>bin</code> directory:
+
+<pre>
+$ ./phantomjs-1.9.0-linux-armv6l/bin/phantomjs --version
+1.9.0
+</pre>
+
 
 I achieved the best screenshot results with the following font configuration.
 
@@ -30,7 +46,7 @@ $ sudo fc-cache -rv
 
 __Process used to build PhantomJS__
 
-In this chapter I describe the steps I have executed to build the PhantomJS binary.
+PhantomJS has been built using the proccess described below.
 
 __1.__ According to http://phantomjs.org/build.html :
 
@@ -76,13 +92,11 @@ __4.__ Open <code>./src/qt/preconfig.sh</code> and add the option <code>' -no-pc
 __5.__ Start compilation:
 
 <pre>
-$ nohup ./deploy/build-and-package.sh > build-and-package.sh.out 2> build-and-package.sh.err &
+$ nohup ./build.sh --confirm > build.sh.out 2> build.sh.err &
 </pre>
 
 
 __6.__ Create tarball according to http://phantomjs.org/build.html :
-
-__TODO:__ _Is this step still necessary when building with build-and-package.sh ?_
 
 <pre>
 ./deploy/package.sh
