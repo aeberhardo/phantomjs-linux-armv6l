@@ -46,7 +46,7 @@ $ sudo fc-cache -rv
 
 __Process used to build PhantomJS__
 
-PhantomJS has been built using the proccess described below.
+PhantomJS has been built using the process described below.
 
 __1.__ According to http://phantomjs.org/build.html :
 
