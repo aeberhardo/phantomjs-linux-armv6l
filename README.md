@@ -1,12 +1,11 @@
-phantomjs-linux-armv6l
-======================
+## phantomjs-linux-armv6l
 
 PhantomJS 1.9, compiled on Raspberry PI (Raspbian "wheezy").
 
 PhantomJS is a headless WebKit with JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG. (http://phantomjs.org).
 
 
-__Installation on Raspberry PI__
+### Installation on Raspberry PI
 
 Download the archive and extract the binary:
 
@@ -44,7 +43,7 @@ $ sudo fc-cache -rv
 </pre>
 
 
-__Process used to build PhantomJS__
+### Build Process
 
 PhantomJS has been built using the process described below.
 
