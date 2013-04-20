@@ -1,14 +1,29 @@
-phantomjs-linux-armv6l
-======================
+## phantomjs-linux-armv6l
 
-PhantomJS 1.8.1, compiled on Raspberry PI (Raspbian "wheezy").
+PhantomJS 1.9, compiled on Raspberry PI (Raspbian "wheezy").
 
 PhantomJS is a headless WebKit with JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG. (http://phantomjs.org).
 
 
-__Installation on Raspberry PI__
+### Installation on Raspberry PI
 
-Clone this repository and extract the file <code>phantomjs-x.y.z-linux-armv6l.tar.bz2</code>.
+Download the archive and extract the binary:
+
+<pre>
+$ cd /tmp
+$ wget https://github.com/aeberhardo/phantomjs-linux-armv6l/archive/master.zip
+$ unzip master.zip
+$ cd phantomjs-linux-armv6l-master
+$ bunzip2 *.bz2 && tar xf *.tar
+</pre>
+
+The binary <code>phantomjs</code> is located in the <code>bin</code> directory:
+
+<pre>
+$ ./phantomjs-1.9.0-linux-armv6l/bin/phantomjs --version
+1.9.0
+</pre>
+
 
 I achieved the best screenshot results with the following font configuration.
 
@@ -28,16 +43,18 @@ $ sudo fc-cache -rv
 </pre>
 
 
-__Process used to build PhantomJS__
+### Build Process
 
-In this chapter I describe the steps I have executed to build the PhantomJS binary.
+PhantomJS has been built using the process described below.
 
 __1.__ According to http://phantomjs.org/build.html :
 
 <pre>
+$ sudo apt-get update
 $ sudo apt-get install build-essential chrpath git-core libssl-dev libfontconfig1-dev
+$ git clone git://github.com/ariya/phantomjs.git
 $ cd phantomjs
-$ git checkout 1.8
+$ git checkout 1.9
 </pre>
 
 
@@ -48,14 +65,14 @@ $ mkdir src/qt/src/3rdparty/pixman && pushd src/qt/src/3rdparty/pixman && curl -
 </pre>
 
 
-__3.__ Open <code>./build.sh</code> and delete lines 11-31:
+__3.__ Open <code>./build.sh</code> and delete lines 11-34:
 
 <pre>
 .. ...
 11 if [[ "$MAKEFLAGS" != "" ]]; then
 12 MAKEFLAGS_JOBS=$(echo $MAKEFLAGS | egrep -o '\-j[0-9]+' | egrep -o '[0-9]+')
 .. ...
-31 fi
+34 fi
 .. ...
 </pre>
 
@@ -71,7 +88,7 @@ __4.__ Open <code>./src/qt/preconfig.sh</code> and add the option <code>' -no-pc
 </pre>
 
 
-__5.__ Start compilation (takes about half a day):
+__5.__ Start compilation:
 
 <pre>
 $ nohup ./build.sh --confirm > build.sh.out 2> build.sh.err &
